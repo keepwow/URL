@@ -2,6 +2,8 @@ site_name: U.R.Lucky
 
 nav:
   - index.md
+  - "English": "en/index.md"
+  - "中文": "zh/index.md"
 
 theme:
   name: material
