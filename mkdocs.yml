@@ -2,10 +2,18 @@ site_name: U.R.Lucky
 
 nav:
   - index.md
-  - Chapter1: ch1.md
 
 theme:
-  name: readthedocs
+  name: material
+  language: en # (1)!  
   analytics:
     gtag: G-36HTPNNRCG
 
+extra:
+  alternate:
+    - name: English
+      link: /en/ # (1)!
+      lang: en
+    - name: 中文
+      link: /zh/
+      lang: zh
