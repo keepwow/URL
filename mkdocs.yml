@@ -5,7 +5,8 @@ nav:
 
 theme:
   name: material
-  language: en # (1)!  
+  language: en # (1)!
+  font: false
   analytics:
     gtag: G-36HTPNNRCG
 
