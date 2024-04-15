@@ -6,7 +6,6 @@ nav:
 theme:
   name: material
   language: en # (1)!
-  font: false
   analytics:
     gtag: G-36HTPNNRCG
 
@@ -18,3 +17,6 @@ extra:
     - name: 中文
       link: /zh/
       lang: zh
+
+plugins:
+  - privacy
