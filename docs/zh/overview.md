@@ -2,6 +2,8 @@
 
 「从浏览器地址栏输入网址，到网页彻底打开，中间都发生了什么？」
 
+为了让文章更有趣味性，我们先思考这样一个问题，**「从进入餐厅落座后拿到菜单点完菜，到用餐结束离开餐厅，中间都发生了什么？」**
+
 读完[一则经典技术面试题目的解读](http://mp.weixin.qq.com/s?__biz=MzI0MjA1Mjg2Ng==&amp;mid=209679438&amp;idx=1&amp;sn=d68c1512ad23f6e164f69bd351a18c62&amp;) （下文统一称为**解读**），我们应该有了一个大概的认知，即上网这个过程分为三个大的区块，一块是客户端，一块是网络传输层，一块是服务端。
 
 这种先总后分的思路有助于我们更好地理解整个过程。就拿学习开车来说，我心中的好教练会告诉学员：「不要想太多，一个方向盘，四个轮子，有啥好怕的」。对一个学车的新手来说，上来就研究发动机的运行原理，大概率不会对掌握开车技能有实际的帮助。
@@ -12,6 +14,8 @@
 - 网络传输层
 - 服务端
 
+在前面「用餐」的例子里，**客户端**即「消费者」，**传输层**的角色由「服务员」扮演，而**服务端**则是「厨师」。
+
 ## 概念：名词解释
 
 ### 客户端
@@ -19,6 +23,61 @@
 在当前的语境下，我们首先想到的应该是「浏览器」。我们知道，浏览器有很多种，比较知名的有 **谷歌的 Chrome、Mozilla Firefox、苹果的 Safari、微软的 Microsoft Edge** 等。
 
 当然，我们知道浏览器是作为一个应用程序运行在操作系统上的，所以我们在理解「客户端」这个概念的时候，还要考虑到诸如 macOS/iOS/iPadOS、Linux/Android、Windows 等操作系统。再举个例子，当我们在微信里打开一个链接的时候，微信就是一个客户端。
+
+除了上面这些具有现代化好看的用户界面的客户端，我们还应该了解诸如 `wget`, `curl` 一类的命令行工具，也可以扮演客户端的角色，这里先放一个示例：
+
+```console
+% curl -vvv http://localhost
+* Host localhost:80 was resolved.
+* IPv6: ::1
+* IPv4: 127.0.0.1
+*   Trying [::1]:80...
+* connect to ::1 port 80 from ::1 port 55294 failed: Connection refused
+*   Trying 127.0.0.1:80...
+* Connected to localhost (127.0.0.1) port 80
+> GET / HTTP/1.1
+> Host: localhost
+> User-Agent: curl/8.7.1
+> Accept: */*
+>
+* Request completely sent off
+< HTTP/1.1 200 OK
+< Server: nginx/1.25.4
+< Date: Tue, 16 Apr 2024 05:25:47 GMT
+< Content-Type: text/html
+< Content-Length: 615
+< Last-Modified: Wed, 14 Feb 2024 16:03:35 GMT
+< Connection: keep-alive
+< ETag: "65cce457-267"
+< Accept-Ranges: bytes
+<
+<!DOCTYPE html>
+<html>
+<head>
+<title>Welcome to nginx!</title>
+<style>
+html { color-scheme: light dark; }
+body { width: 35em; margin: 0 auto;
+font-family: Tahoma, Verdana, Arial, sans-serif; }
+</style>
+</head>
+<body>
+<h1>Welcome to nginx!</h1>
+<p>If you see this page, the nginx web server is successfully installed and
+working. Further configuration is required.</p>
+
+<p>For online documentation and support please refer to
+<a href="http://nginx.org/">nginx.org</a>.<br/>
+Commercial support is available at
+<a href="http://nginx.com/">nginx.com</a>.</p>
+
+<p><em>Thank you for using nginx.</em></p>
+</body>
+</html>
+* Connection #0 to host localhost left intact
+```
+
+简单解释一下，上面的命令是使用 `curl` 这个「客户端」去请求 `http://localhost` 这个「服务端」，我使用 `-vvv` 参数，把这个请求过程的详细信息打印了出来，关于请求过程，我们后续再讨论，目前先有个印象即可。
 
 现在我们先认为客户端就是一个普通的浏览器，为了方便后续的抓包演示，如果不做特别说明，本书将默认「客户端」是「运行在 macOS 上的 Chrome 浏览器」。
 
@@ -28,7 +87,8 @@
 
 但在当前语境下，这个「网络传输层」可能并不局限于对 `OCI` 的七层模型、`TCP/IP` 的四层/五层模型 等模型的理解，我们还需要了解 `DNS`、`HTTP/HTTPS`、`CDN` 甚至 `QUIC` 等**非传输层**的协议。
 
-同样地，这些概念太多了，我们后面遇到了再详细展开。
+同样地，这些概念太多了，读者大不必为此挠头，我们先混个眼熟，后面遇到了再详细展开。
+
 
 ### 服务端
 
