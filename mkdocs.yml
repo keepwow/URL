@@ -37,13 +37,13 @@ extra:
     provider: google
     property: G-36HTPNNRCG
 
-# # Extensions
-# markdown_extensions:
+# Extensions
+markdown_extensions:
 #   - abbr
 #   - admonition
 #   - attr_list
 #   - def_list
-#   - footnotes
+  - footnotes
 #   - md_in_html
 #   - toc:
 #       permalink: true
