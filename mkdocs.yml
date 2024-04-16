@@ -1,24 +1,97 @@
+# Project information
 site_name: U.R.Lucky
+site_url: https://keepwow.github.io/URL/
+site_author: Melody Young (keepwow)
+site_description: >-
+  U.R.Lucky, know how the network works.
 
-nav:
-  - index.md
-  - "English": "en/index.md"
-  - "中文": "zh/index.md"
+# Repository
+repo_name: keepwow/URL
+repo_url: https://github.com/keepwow/URL
 
+# Copyright
+copyright: Copyright &copy; 2024 Melody Young
+
+# Configuration
 theme:
   name: material
   language: en # (1)!
-  analytics:
-    gtag: G-36HTPNNRCG
+  features:
+    - navigation.tabs
 
+# Plugins
+plugins:
+  - privacy
+
+# Additional configuration
 extra:
   alternate:
     - name: English
-      link: /en/ # (1)!
+      link: /URL/en/ # (1)!
       lang: en
     - name: 中文
-      link: /zh/
+      link: /URL/zh/
       lang: zh
 
-plugins:
-  - privacy
+  analytics:
+    provider: google
+    property: G-36HTPNNRCG
+
+# # Extensions
+# markdown_extensions:
+#   - abbr
+#   - admonition
+#   - attr_list
+#   - def_list
+#   - footnotes
+#   - md_in_html
+#   - toc:
+#       permalink: true
+#   - pymdownx.arithmatex:
+#       generic: true
+#   - pymdownx.betterem:
+#       smart_enable: all
+#   - pymdownx.caret
+#   - pymdownx.details
+#   - pymdownx.emoji:
+#       emoji_generator: !!python/name:material.extensions.emoji.to_svg
+#       emoji_index: !!python/name:material.extensions.emoji.twemoji
+#   - pymdownx.highlight:
+#       anchor_linenums: true
+#       line_spans: __span
+#       pygments_lang_class: true
+#   - pymdownx.inlinehilite
+#   - pymdownx.keys
+#   - pymdownx.magiclink:
+#       normalize_issue_symbols: true
+#       repo_url_shorthand: true
+#       user: squidfunk
+#       repo: mkdocs-material
+#   - pymdownx.mark
+#   - pymdownx.smartsymbols
+#   - pymdownx.snippets:
+#       auto_append:
+#         - includes/mkdocs.md
+#   - pymdownx.superfences:
+#       custom_fences:
+#         - name: mermaid
+#           class: mermaid
+#           format: !!python/name:pymdownx.superfences.fence_code_format
+#   - pymdownx.tabbed:
+#       alternate_style: true
+#       combine_header_slug: true
+#       slugify: !!python/object/apply:pymdownx.slugs.slugify
+#         kwds:
+#           case: lower
+#   - pymdownx.tasklist:
+#       custom_checkbox: true
+#   - pymdownx.tilde
+
+# Page tree
+nav:
+  - Home: index.md
+  - English: 
+    - Overview: en/index.md
+  - 中文: 
+    - 前言: zh/index.md
+    - 概览: zh/overview.md
